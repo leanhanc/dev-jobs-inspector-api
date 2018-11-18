@@ -1,0 +1,33 @@
+{
+  "name": "job-inspector-api",
+  "version": "1.0.0",
+  "description": "Dev Job Finder - API",
+  "engines": {
+    "node": "8.2.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "npm run test"
+  },
+  "author": "Leandro Hanc",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "node-cron": "^2.0.3",
+    "passport-headerapikey": "^1.1.0",
+    "pg": "^7.6.0",
+    "puppeteer": "^1.10.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "^1.14.3"
+  }
+}
