@@ -3,6 +3,7 @@ const open_computrabajo = require('./open');
 const close_computrabajo = require('./close');
 const search_jobs = require('./search_jobs');
 const read_jobs = require('./read_jobs');
+const read_jobs_details = require('./read_job_details');
 
 module.exports = async query => {
   /* Iniciar Puppeteer */
