@@ -1,4 +1,4 @@
-const { puppetLaunch } = require('../../config/puppeteer');
+const { puppetLaunch } = require('../config');
 const open_computrabajo = require('./open');
 const close_computrabajo = require('./close');
 const search_jobs = require('./search_jobs');

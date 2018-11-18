@@ -4,6 +4,37 @@ exports.ZONAJOBS_URL = 'https://www.zonajobs.com.ar';
 exports.ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR = '#query';
 
 /**
+ * Palabras a buscar en los portales de trabajo
+ */
+
+exports.AREAS = ['Full-stack', 'Back-end', 'Front-end'];
+exports.TECHNOLOGIES = [
+  'Android',
+  'Angular',
+  'Angular JS',
+  'Desarrollador C',
+  'Desarrollador C#',
+  'Cordova',
+  'Ionic',
+  'Ios',
+  'Java',
+  'Javascript',
+  'Laravel',
+  'MySQL',
+  'MS SQL Server',
+  '.Net',
+  'Node',
+  'Php',
+  'PostgreSQL',
+  'Python',
+  'React',
+  'React Native',
+  'Spring',
+  'SQL',
+  'Vue JS'
+];
+
+/**
  * Puppeter Config
  */
 
