@@ -1,8 +1,8 @@
 const {
   ZONAJOBS_URL,
   ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR
-} = require('../config');
-const { puppetPageConfig } = require('../config');
+} = require('../../config');
+const { puppetPageConfig } = require('../../config');
 
 // Abrir Zonajobs y esperar selector
 

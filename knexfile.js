@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'jobinspector',
+      database: 'devjobfinder',
       user: process.env.DB_USER,
       password: process.env.DB_SECRET
     },

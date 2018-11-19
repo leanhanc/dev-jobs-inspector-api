@@ -1,4 +1,4 @@
-const { puppetLaunch } = require('../config');
+const { puppetLaunch } = require('../../config');
 const open_zona_jobs = require('./open');
 const close_zona_jobs = require('./close');
 const search_jobs = require('./search_jobs');
