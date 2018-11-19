@@ -1,8 +1,8 @@
 const {
   COMPUTRABAJO_URL,
   COMPUTRABAJO_FIRST_SELECTOR_TO_WAIT_FOR
-} = require('../../config/computrabajo');
-const { puppetPageConfig } = require('../../config/puppeteer');
+} = require('../config');
+const { puppetPageConfig } = require('../config');
 
 /* Abrir Computrabajo y esperar selector */
 

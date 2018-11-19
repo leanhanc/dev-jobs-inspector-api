@@ -13,7 +13,12 @@ module.exports = async query => {
   /* Tomar la query que viene por parámetros y buscar en la página */
   page = await search_jobs(page, query);
   /* Hacer el scraping de los trabajos */
-  const computrabajo_jobs = await read_jobs(page);
+  const today_computrabajo_jobs = await read_jobs(page);
+  /* Tomar cada trabajo y obtener su detalle */
+  const computrabajo_jobs = await read_jobs_details(
+    today_computrabajo_jobs,
+    page
+  );
   /* Cerrar el navegador y devolver la lista de trabajos que se obtuvieron */
   await close_computrabajo(browser);
 

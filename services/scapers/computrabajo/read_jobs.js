@@ -19,10 +19,10 @@ module.exports = async page => {
       let json = {};
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.dO').innerText.split(',')[0];
-      if (!date.includes('Hoy') || !date.includes('Ayer')) {
+
+      if (!date.trim().startsWith('Ayer')) {
         return;
       }
-      json.date = date;
       json.title = parent.querySelector('h2.tO').innerText;
       json.url = parent.querySelector('h2.tO > a').href;
       /* Por alguna razón, Computrabajo trata distino a "Kaizen Recursos Humanos",

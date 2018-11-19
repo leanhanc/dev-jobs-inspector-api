@@ -6,6 +6,7 @@ const app = express();
 
 /* Implementar Body Parser */
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Cargar rutas */
 const api_routes = require('./API/routes');
