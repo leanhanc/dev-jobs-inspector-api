@@ -8,9 +8,9 @@ module.exports = async page => {
     });
 
   const computrabajo_jobs = await page.evaluate(async () => {
-    // Buscar el contenedor de cada aviso
-
     const jobs = [];
+
+    // Buscar el contenedor de cada aviso
     const parents = await document.querySelectorAll('.iO');
 
     /* Guardar el título, la ubicacación, la URL del anuncio
