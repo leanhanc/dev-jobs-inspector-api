@@ -9,6 +9,6 @@ module.exports = async (jobs, page) => {
 
     const description = await page.$eval('.p0.m0>li', e => e.innerText);
     job.description = description;
-    return job;
   }
+  return jobs;
 };
