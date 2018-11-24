@@ -10,10 +10,8 @@ module.exports = async page => {
     // Buscar el contenedor de cada aviso
     const jobs = [];
     const parents = await document.querySelectorAll('.aviso');
-
     /* Guardar el título, la ubicacación, la URL, la fecha de publicación
     y la agencia o empresa que lo publicó*/
-
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.z-fecha').innerText;

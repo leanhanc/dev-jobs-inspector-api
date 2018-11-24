@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { catchErrors } = require('../../middleware/errors');
 
-const ct_scraper = require('../../services/scapers/computrabajo/');
-const zj_scraper = require('../../services/scapers/zonajobs/');
-
 const test = (req, res) => {
   res.send('Dev Job Finder - API');
 };

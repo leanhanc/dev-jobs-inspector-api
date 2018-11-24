@@ -1,5 +1,6 @@
 module.exports = async (page, query) => {
   // Tipear consulta
+
   const searchInput = await page.$('#sq');
   await searchInput.focus();
   await searchInput.type(query);

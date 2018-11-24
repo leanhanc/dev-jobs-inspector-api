@@ -17,7 +17,7 @@ module.exports = async query => {
   /* Tomar cada trabajo y obtener su detalle */
   const zonajobs_jobs = await read_jobs_details(today_zonajob_jobs, page);
   /* Cerrar el navegador y devolver la lista de trabajos que se obtuvieron */
-  //await close_zona_jobs(browser);
+  await close_zona_jobs(browser);
 
   return zonajobs_jobs;
 };

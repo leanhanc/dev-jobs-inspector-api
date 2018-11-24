@@ -9,13 +9,10 @@ module.exports = async page => {
 
   const computrabajo_jobs = await page.evaluate(async () => {
     const jobs = [];
-
     // Buscar el contenedor de cada aviso
     const parents = await document.querySelectorAll('.iO');
-
     /* Guardar el título, la ubicacación, la URL del anuncio
     y la agencia o empresa que lo publicó*/
-
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.dO').innerText.split(',')[0];
@@ -29,14 +26,11 @@ module.exports = async page => {
       json.publisher =
         parent.querySelector('span a.it-blank').innerText ||
         'Kaizen Recursos Humanos';
-
       const [, , location] = parent.querySelectorAll('span a');
       /*Si el trabajo figura como "Buenos Aires-GBA", guardarlo como "Buenos Aires" */
       json.location = location.innerText.split('-')[0];
-
       json.title = parent.querySelector('h2.tO').innerText;
       json.url = parent.querySelector('h2.tO > a').href;
-
       jobs.push(json);
     });
     return jobs;

@@ -11,7 +11,6 @@ const open = async browser => {
   await puppetPageConfig(page);
   await page.goto(COMPUTRABAJO_URL);
   await page.waitForSelector(COMPUTRABAJO_FIRST_SELECTOR_TO_WAIT_FOR);
-
   return { browser, page };
 };
 
