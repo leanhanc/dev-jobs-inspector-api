@@ -9,8 +9,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/* Implementar CORS  */
+require('./middleware/cors')(app);
+
 /* Cargar rutas */
-const api_routes = require('./API/routes');
+const api_routes = require('./API/routes/');
 app.use('/api', api_routes);
 
 /* Cargar cron-jobs*/
