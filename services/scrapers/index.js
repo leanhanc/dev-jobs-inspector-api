@@ -1,4 +1,4 @@
 const computrabajo_scraper = require('./computrabajo/');
-const zonajobos_scraper = require('./zonajobs/');
+const zonajobs_scraper = require('./zonajobs/');
 
-module.exports = [computrabajo_scraper, zonajobos_scraper];
+module.exports = [computrabajo_scraper, zonajobs_scraper];

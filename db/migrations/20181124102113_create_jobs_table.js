@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('zonajobs', table => {
+  return knex.schema.createTable('jobs', table => {
     table.increments();
+    table.string('site').notNullable();
     table.string('location');
     table.text('title').notNullable();
     table.text('url').notNullable();
@@ -14,5 +15,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('zonajobs');
+  return knex.schema.dropTable('jobs');
 };

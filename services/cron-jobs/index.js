@@ -1,31 +1,32 @@
 const { AREAS, TECHNOLOGIES } = require('../config');
 const cron = require('node-cron');
 const get = require('./get_today_jobs');
+const save = require('./save_today_jobs');
 
 module.exports = () => {
   const job = cron.schedule(
-    '0 48 21 * * *',
+    '0 18 21 * * *',
     () => {
       /**
        * Los trabajos se indexan por área (Front-End, Back-End, Full-Stack) o
        * por tecnología (lenguaje o framework)
        */
-      console.log('executed');
-      const responses = [];
+
       (async function processAreasAndTechnologies(AREAS, TECHNOLOGIES) {
         try {
           /**
            * Indexar por área
            */
           for (const tech of TECHNOLOGIES) {
-            const todays_jobs = await get(tech, 'technology');
-            console.log(todays_jobs);
+            const found_by_tech = await get(tech);
+            await save(found_by_tech, tech);
           }
           /**
            * Indexar por tecnología
            */
           for (const area of AREAS) {
-            const todays_jobs = await get(area, 'area');
+            const found_by_area = await get(area);
+            await save(found_by_area, area);
           }
         } catch (e) {
           console.log(e);

@@ -19,7 +19,6 @@
     "express": "^4.16.4",
     "knex": "^0.15.2",
     "node-cron": "^2.0.3",
-    "passport-headerapikey": "^1.1.0",
     "pg": "^7.6.0",
     "puppeteer": "^1.10.0"
   },
