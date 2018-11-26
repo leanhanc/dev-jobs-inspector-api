@@ -1,16 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const cron_jobs = require('./services/cron-jobs/index');
 
 /* Iniciar Express */
 const app = express();
 
+/* Implementar CORS  */
+app.use(cors());
+
 /* Implementar Body Parser */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-/* Implementar CORS  */
-require('./middleware/cors')(app);
 
 /* Cargar rutas */
 const api_routes = require('./API/routes/');
