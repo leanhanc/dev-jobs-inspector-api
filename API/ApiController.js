@@ -9,5 +9,5 @@ exports.search = async query => {
     throw new Error('Solicitud inválida. Se requieren al menos 3 caracteres');
   }
   // Ejecutar solicitud
-  return await knex('jobs').where('description', 'like', `%${query}%`);
+  return await knex('jobs').where('title', 'ilike', `%${query}%`);
 };

@@ -7,12 +7,12 @@ const test = (req, res) => {
 };
 
 const search = async (req, res) => {
-  const { query } = req.body;
+  const { query } = req.query;
   const result = await ApiController.search(query);
   res.json(result);
 };
 
 router.get('/test', test);
-router.post('/search', catchErrors(search));
+router.get('/search', catchErrors(search));
 
 module.exports = router;
