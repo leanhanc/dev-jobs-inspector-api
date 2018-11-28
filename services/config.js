@@ -2,6 +2,8 @@ exports.COMPUTRABAJO_URL = 'http://www.computrabajo.com.ar';
 exports.COMPUTRABAJO_FIRST_SELECTOR_TO_WAIT_FOR = '#sq';
 exports.ZONAJOBS_URL = 'https://www.zonajobs.com.ar';
 exports.ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR = '#query';
+exports.BUMERAN_URL = 'https://www.bumeran.com.ar';
+exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '#query';
 
 /**
  * Palabras a buscar en los portales de trabajo
