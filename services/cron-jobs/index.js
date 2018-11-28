@@ -5,13 +5,12 @@ const save = require('./save_today_jobs');
 
 module.exports = () => {
   const job = cron.schedule(
-    '0 27 10 * * *',
+    '0 00 20 * * *',
     () => {
       /**
        * Los trabajos se indexan por área (Front-End, Back-End, Full-Stack) o
        * por tecnología (lenguaje o framework)
        */
-
       (async function processAreasAndTechnologies(AREAS, TECHNOLOGIES) {
         try {
           /**

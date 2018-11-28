@@ -16,7 +16,7 @@ exports.TECHNOLOGIES = [
   'Desarrollador C#',
   'Cordova',
   'Ionic',
-  'Ios',
+  'iOS',
   'Java',
   'Javascript',
   'Laravel',
