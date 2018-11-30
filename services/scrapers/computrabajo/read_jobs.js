@@ -29,6 +29,7 @@ module.exports = async page => {
         'Kaizen Recursos Humanos';
       const [, , location] = parent.querySelectorAll('span a');
       /*Si el trabajo figura como "Buenos Aires-GBA", guardarlo como "Buenos Aires" */
+      // TODO ver caso "importante empresa del sector"
       json.location = location.innerText.split('-')[0];
       json.title = parent.querySelector('h2.tO').innerText;
       json.url = parent.querySelector('h2.tO > a').href;

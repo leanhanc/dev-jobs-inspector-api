@@ -1,9 +1,9 @@
 exports.COMPUTRABAJO_URL = 'http://www.computrabajo.com.ar';
 exports.COMPUTRABAJO_FIRST_SELECTOR_TO_WAIT_FOR = '#sq';
 exports.ZONAJOBS_URL = 'https://www.zonajobs.com.ar';
-exports.ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR = '#query';
+exports.ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR = '.main-footer';
 exports.BUMERAN_URL = 'https://www.bumeran.com.ar';
-exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '#query';
+exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '.main-footer';
 
 /**
  * Palabras a buscar en los portales de trabajo
@@ -24,7 +24,7 @@ exports.TECHNOLOGIES = [
   'Laravel',
   'MySQL',
   'MS SQL Server',
-  '.Net',
+  'Desarrolador .Net',
   'Node',
   'Php',
   'PostgreSQL',
