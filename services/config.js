@@ -13,7 +13,7 @@ exports.AREAS = ['Full-stack', 'Back-end', 'Front-end'];
 exports.TECHNOLOGIES = [
   'Android',
   'Angular',
-  'Angular JS',
+  'AngularJS',
   'Desarrollador C',
   'Desarrollador C#',
   'Cordova',
@@ -46,7 +46,7 @@ const puppeteer = require('puppeteer');
 exports.puppetLaunch = async () => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    //headless: process.env.NODE_ENV === 'production' ? true : false,
+    headless: process.env.NODE_ENV === 'production' ? true : false,
     defaultViewport: { width: 1200, height: 720 }
   });
 

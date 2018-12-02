@@ -1,14 +1,8 @@
-const normalize_location = require('../../../helpers/normalize_zj_and_bumeran_location');
-
 module.exports = async page => {
-  // Ordenar trabajos por "más recientes"
-  await page.waitForSelector('a.btn.switch-btn');
-  const selector = await page.$$('a.btn.switch-btn');
-  selector[1].click();
-
+  await page.waitForSelector('.footer');
   await page.waitForNavigation({ waitUntil: 'networkidle2' });
 
-  const zonajobs_jobs = await page.evaluate(async () => {
+  const bumeran_jobs = await page.evaluate(async () => {
     // Buscar el contenedor de cada aviso
     const jobs = [];
     const parents = await document.querySelectorAll('.aviso');
@@ -17,7 +11,7 @@ module.exports = async page => {
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.z-fecha').innerText;
-      if (!date.includes('HORAS')) {
+      if (!date.includes('Ayer')) {
         return;
       }
       let json = {};
@@ -25,17 +19,24 @@ module.exports = async page => {
       json.title = parent.querySelector('.titulo-aviso').innerText;
       json.publisher = parent.querySelector('.nombre').innerText;
       json.url = parent.querySelector('.col-sm-9.col-md-10.wrapper>a').href;
-      json.location = normalize_location(
+
+      json.location =
         parent.querySelectorAll(
           '.col-sm-9.col-md-10.wrapper .ubicacion_link > .ubicacion'
         )[0].innerText +
-          parent.querySelectorAll(
-            '.col-sm-9.col-md-10.wrapper .ubicacion_link > .ubicacion'
-          )[1].innerText
-      );
+        parent.querySelectorAll(
+          '.col-sm-9.col-md-10.wrapper .ubicacion_link > .ubicacion'
+        )[1].innerText;
+
+      if (json.location.includes('Capital')) {
+        json.location = 'Capital Federal';
+      } else {
+        json.location = json.location.split(',')[1];
+      }
+
       jobs.push(json);
     });
     return jobs;
   });
-  return zonajobs_jobs;
+  return bumeran_jobs;
 };
