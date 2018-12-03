@@ -30,6 +30,13 @@ module.exports = async page => {
         parent.querySelectorAll(
           '.col-sm-9.col-md-10.wrapper .ubicacion_link > .ubicacion'
         )[1].innerText;
+
+      if (json.location.includes('Capital')) {
+        json.location = 'Capital Federal';
+      } else {
+        json.location = json.location.split(',')[1];
+      }
+
       jobs.push(json);
     });
     return jobs;

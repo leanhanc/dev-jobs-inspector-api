@@ -1,6 +1,11 @@
 module.exports = async page => {
-  await page.waitForSelector('.footer');
-  await page.waitForNavigation({ waitUntil: 'networkidle2' });
+  await page
+    .waitForSelector('.sortby', {
+      timeout: 3000
+    })
+    .catch(e => {
+      return e;
+    });
 
   const bumeran_jobs = await page.evaluate(async () => {
     // Buscar el contenedor de cada aviso
@@ -11,7 +16,7 @@ module.exports = async page => {
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.z-fecha').innerText;
-      if (!date.includes('Ayer')) {
+      if (!date.includes('horas')) {
         return;
       }
       let json = {};

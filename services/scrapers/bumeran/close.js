@@ -1,6 +1,6 @@
 module.exports = async browser => {
   setTimeout(() => {
     browser.close();
-  }, 1000);
+  }, 500);
   return browser;
 };
