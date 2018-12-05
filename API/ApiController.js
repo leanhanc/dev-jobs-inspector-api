@@ -22,11 +22,17 @@ exports.search = async (query, currentPage) => {
    */
 
   if (count > itemsPerPage) {
-    return await knex('jobs')
+    const result = {};
+    result.data = await knex('jobs')
       .where('title', 'ilike', `%${query}%`)
       .orderBy('created_at', 'desc')
       .limit(itemsPerPage)
       .offset((currentPage - 1) * itemsPerPage);
+
+    result.totalItems = count;
+    result.hasMoreItems = itemsPerPage * currentPage < count;
+
+    return result;
   }
 
   return await knex('jobs')
