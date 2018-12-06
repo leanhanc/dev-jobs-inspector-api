@@ -16,7 +16,7 @@ module.exports = async page => {
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.dO').innerText.split(',')[0];
-      if (!date.trim().startsWith('Hoy')) {
+      if (!date.trim().startsWith('Ayer')) {
         return;
       }
       let json = {};
@@ -28,14 +28,21 @@ module.exports = async page => {
         parent.querySelector('span a.it-blank').innerText ||
         'Kaizen Recursos Humanos';
       const [, , location] = parent.querySelectorAll('span a');
-      /*Si el trabajo figura como "Buenos Aires-GBA", guardarlo como "Buenos Aires" */
-      // TODO ver caso "importante empresa del sector"
       json.location = location.innerText.split('-')[0];
-      json.title = parent.querySelector('h2.tO').innerText;
-      json.url = parent.querySelector('h2.tO > a').href;
-      jobs.push(json);
-    });
-    return jobs;
+      if (
+        json.location.includes('Belgrano') ||
+        json.location.includes('Monserrat') ||
+        json.location.includes('Puerto Madero')
+        json.location.includes('San Nicolás')
+      ) {
+      json.location = 'Capital Federal';
+    }
+
+    json.title = parent.querySelector('h2.tO').innerText;
+    json.url = parent.querySelector('h2.tO > a').href;
+    jobs.push(json);
   });
-  return computrabajo_jobs;
+  return jobs;
+});
+return computrabajo_jobs;
 };

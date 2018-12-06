@@ -3,7 +3,7 @@ exports.COMPUTRABAJO_FIRST_SELECTOR_TO_WAIT_FOR = '#sq';
 exports.ZONAJOBS_URL = 'https://www.zonajobs.com.ar';
 exports.ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR = '.main-footer';
 exports.BUMERAN_URL = 'https://www.bumeran.com.ar';
-exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '.main-footer';
+exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '.more';
 
 /**
  * Palabras a buscar en los portales de trabajo
@@ -13,9 +13,7 @@ exports.AREAS = ['Full-stack', 'Back-end', 'Front-end'];
 exports.TECHNOLOGIES = [
   'Android',
   'Angular',
-  'AngularJS',
   'Desarrollador C',
-  'Desarrollador C#',
   'Cordova',
   'Ionic',
   'iOS',

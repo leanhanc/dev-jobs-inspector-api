@@ -1,4 +1,5 @@
 module.exports = async page => {
+  await page.waitForNavigation({ waitUntil: 'networkidle2' });
   await page
     .waitForSelector('.sortby', {
       timeout: 3000
