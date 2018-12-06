@@ -16,7 +16,7 @@ module.exports = async page => {
     await parents.forEach(async parent => {
       /* Chequear si el aviso se publicó hoy, si no es de hoy, saltearlo*/
       const date = parent.querySelector('.dO').innerText.split(',')[0];
-      if (!date.trim().startsWith('Ayer')) {
+      if (!date.trim().startsWith('Hoy')) {
         return;
       }
       let json = {};
