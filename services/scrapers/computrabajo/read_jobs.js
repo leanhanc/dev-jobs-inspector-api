@@ -32,17 +32,17 @@ module.exports = async page => {
       if (
         json.location.includes('Belgrano') ||
         json.location.includes('Monserrat') ||
-        json.location.includes('Puerto Madero')
+        json.location.includes('Puerto Madero') ||
         json.location.includes('San Nicolás')
       ) {
-      json.location = 'Capital Federal';
-    }
+        json.location = 'Capital Federal';
+      }
 
-    json.title = parent.querySelector('h2.tO').innerText;
-    json.url = parent.querySelector('h2.tO > a').href;
-    jobs.push(json);
+      json.title = parent.querySelector('h2.tO').innerText;
+      json.url = parent.querySelector('h2.tO > a').href;
+      jobs.push(json);
+    });
+    return jobs;
   });
-  return jobs;
-});
-return computrabajo_jobs;
+  return computrabajo_jobs;
 };
