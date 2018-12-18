@@ -3,7 +3,7 @@ const knex = require('../db/knex');
 // PAGINATION OPTIONS
 const { itemsPerPage } = require('../db/config');
 
-exports.search = async (query, currentPage) => {
+exports.search = async (query, currentPage, filters) => {
   // Validar solicitud
   if (!query) {
     throw new Error('Solicitud inválida');
@@ -21,6 +21,7 @@ exports.search = async (query, currentPage) => {
    * Caso contrario se implementa paginación
    */
 
+  // ! Paginación
   if (count > itemsPerPage) {
     const result = {};
     result.data = await knex('jobs')

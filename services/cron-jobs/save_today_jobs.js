@@ -11,6 +11,7 @@ module.exports = async (jobs_to_save, area_or_technology) => {
   if (jobs_to_save.length) {
     const query = knex('jobs').insert(jobs_to_save);
     const result = await knex.raw('? ON CONFLICT DO NOTHING', [query]);
+
     if (!result.rowCount) {
       console.log(
         'No se encontraron nuevas publicaciones de ' + area_or_technology
