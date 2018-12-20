@@ -3,7 +3,7 @@ const knex = require('../db/knex');
 // PAGINATION OPTIONS
 const { itemsPerPage } = require('../db/config');
 
-exports.search = async (query, currentPage, filters) => {
+exports.search = async (query, currentPage, filter) => {
   // Validar solicitud
   if (!query) {
     throw new Error('Solicitud inválida');
@@ -14,6 +14,7 @@ exports.search = async (query, currentPage, filters) => {
 
   const [{ count }] = await knex('jobs')
     .where('title', 'ilike', `%${query}%`)
+    .andWhere('location', 'ilike', `%${filter}%`)
     .count();
 
   /**
@@ -26,6 +27,7 @@ exports.search = async (query, currentPage, filters) => {
     const result = {};
     result.data = await knex('jobs')
       .where('title', 'ilike', `%${query}%`)
+      .andWhere('location', 'ilike', `%${filter}%`)
       .orderBy('created_at', 'desc')
       .limit(itemsPerPage)
       .offset((currentPage - 1) * itemsPerPage);
@@ -36,7 +38,12 @@ exports.search = async (query, currentPage, filters) => {
     return result;
   }
 
-  return await knex('jobs')
+  const singlePageResults = {};
+  singlePageResults.data = await knex('jobs')
     .where('title', 'ilike', `%${query}%`)
+    .andWhere('location', 'ilike', `%${filter}%`)
     .orderBy('created_at', 'desc');
+  singlePageResults.totalItems = count;
+
+  return singlePageResults;
 };
