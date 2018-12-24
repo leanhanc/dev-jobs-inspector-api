@@ -7,8 +7,13 @@ const test = (req, res) => {
 };
 
 const search = async (req, res) => {
-  const { query, page: currentPage, filter } = req.query;
-  const result = await ApiController.search(query, currentPage, filter);
+  const { query, page: currentPage, locationFilter, dateFilter } = req.query;
+  const result = await ApiController.search(
+    query,
+    currentPage,
+    locationFilter,
+    dateFilter
+  );
   res.json(result);
 };
 
