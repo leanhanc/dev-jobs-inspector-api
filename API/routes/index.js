@@ -3,7 +3,7 @@ const ApiController = require('../ApiController');
 const { catchErrors } = require('../../middleware/errors');
 
 const test = (req, res) => {
-  res.json({ data: 'Dev Job Finder - API' });
+  res.json({ data: 'Dev Job Inspector - API' });
 };
 
 const search = async (req, res) => {

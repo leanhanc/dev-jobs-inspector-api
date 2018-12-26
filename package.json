@@ -1,7 +1,7 @@
 {
-  "name": "dev-job-finder-api",
+  "name": "dev-job-inspector-api",
   "version": "1.0.0",
-  "description": "Dev Job Finder - API",
+  "description": "Dev Job Inspector - API",
   "engines": {
     "node": "8.2.1"
   },
