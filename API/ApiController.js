@@ -1,19 +1,30 @@
 const knex = require('../db/knex');
 const helpers = require('./helpers');
 
+/**
+ * 1 - Se valida que la solicitud no esté vacía.
+ * 2 - Se realiza una primera consulta ("prelimary") para tener el total
+ * bruto de resultados (sin filrar por fecha).
+ * 3 - Se chequea si se filtra por fecha. En tal caso
+ * los items totales siguen siendo los obtenidos preliminarmente, pero se
+ * envían los datos filtrados y paginados si corresponde.
+ */
+
 // PAGINATION OPTIONS
 const { itemsPerPage } = require('../db/config');
 
-exports.search = async (query, currentPage, locationFilter, dateFilter) => {
-  /**
-   * 1 - Se valida que la solicitud no esté vacía.
-   * 2 - Se realiza una primera consulta ("prelimary") para tener el total
-   * bruto de resultados (sin filrar por fecha).
-   * 3 - Se chequea si se filtra por fecha. En tal caso
-   * los items totales siguen siendo los obtenidos preliminarmente, pero se
-   * envían los datos filtrados y paginados, en el caso de corresponda hacerlo.
-   */
-
+/**
+ * Los paramétros deben llegar como query strings.
+ * @param {string} query - La consulta. Se busca la cadena de texto
+ * que aquí se reciba en el cuerpo/descripción de los avisos.
+ * @param {number} currentPage - Los resultados se devuelven paginados (default:1).
+ * La página requerida debe llegar como "page" en la query string.
+ * @param {string} locationFilter - Para filtrar por provincia. Ver opciones en la
+ * documentación:
+ * @param {string} dateFilter - Para filtrar por fecha de publicación. Ver
+ * opciones en la documentación:
+ */
+exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
   // Validar solicitud
   if (!query) {
     throw new Error('Solicitud inválida');
