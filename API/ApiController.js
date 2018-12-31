@@ -29,9 +29,6 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
   if (!query) {
     throw new Error('Solicitud inválida');
   }
-  if (query.length < 3) {
-    throw new Error('Solicitud inválida. Se requieren al menos 3 caracteres');
-  }
 
   const preliminary = await knex('jobs')
     .where('description', 'ilike', `%${query}%`)
@@ -46,7 +43,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
 
     // Paginación
     if (preliminary.totalItems > itemsPerPage) {
-      const result = {};
+      let result = {};
       result.data = await knex('jobs')
         .where('description', 'ilike', `%${query}%`)
         .andWhere('location', 'ilike', `%${locationFilter}%`)
@@ -56,7 +53,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
 
       result.totalItems = preliminary.totalItems;
       result.hasMoreItems = itemsPerPage * currentPage < preliminary.totalItems;
-
+      result.data = helpers.filterByDate(dateFilter, result.data);
       return result;
     }
 

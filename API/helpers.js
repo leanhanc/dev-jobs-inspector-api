@@ -11,10 +11,10 @@ exports.timeDifferences = {
 
 exports.times = {
   all: null,
-  today: subDays(new Date(), this.timeDifferences[0]),
-  yesterday: subDays(new Date(), this.timeDifferences[1]),
-  this_week: subDays(new Date(), this.timeDifferences[2]),
-  this_month: subDays(new Date(), this.timeDifferences[3])
+  today: subDays(new Date(), this.timeDifferences[1]),
+  yesterday: subDays(new Date(), this.timeDifferences[2]),
+  this_week: subDays(new Date(), this.timeDifferences[3]),
+  this_month: subDays(new Date(), this.timeDifferences[4])
 };
 
 exports.filterByDate = (filter, jobsToEvaluate) => {
