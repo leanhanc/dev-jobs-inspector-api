@@ -1,6 +1,6 @@
 # Dev Job Finder - API
 
-- Scraping de los portales de trabajo argentinos
+- Scraping de avisos para desarrolladores en los portales de trabajo argentinos
 - API para la consulta de los avisos encontrados
 
 La aplicación esta hecha con el siguiente stack:
