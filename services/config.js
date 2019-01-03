@@ -15,6 +15,7 @@ exports.TECHNOLOGIES = [
   'Angular',
   'Desarrollador C',
   'Cordova',
+  'DevOps',
   'Ionic',
   'iOS',
   'Java',
