@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
 
     // Constraints
     table.unique('url');
+    table.unique('description');
   });
 };
 
