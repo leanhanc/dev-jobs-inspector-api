@@ -19,8 +19,7 @@ const { itemsPerPage } = require('../db/config');
  * que aquí se reciba en el cuerpo/descripción de los avisos.
  * @param {number} currentPage - Los resultados se devuelven paginados (default:1).
  * La página requerida debe llegar como "page" en la query string.
- * @param {string} locationFilter - Para filtrar por provincia. Ver opciones en la
- * documentación:
+ * @param {string} locationFilter - Para filtrar por provincia.
  * @param {string} dateFilter - Para filtrar por fecha de publicación. Ver
  * opciones en la documentación:
  */
