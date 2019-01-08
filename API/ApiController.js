@@ -30,7 +30,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
   }
 
   const preliminary = await knex('jobs')
-    .where('description', 'ilike', `%${query}%`)
+    .where('title', 'ilike', `%${query}%`)
     .andWhere('location', 'ilike', `%${locationFilter}%`);
 
   // Chequear si se va a filtrar por fecha
@@ -44,7 +44,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
     if (preliminary.totalItems > itemsPerPage) {
       let result = {};
       result.data = await knex('jobs')
-        .where('description', 'ilike', `%${query}%`)
+        .where('title', 'ilike', `%${query}%`)
         .andWhere('location', 'ilike', `%${locationFilter}%`)
         .orderBy('created_at', 'desc')
         .limit(itemsPerPage)
@@ -58,7 +58,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
 
     let filteredJobsSinglePage = {};
     filteredJobsSinglePage.data = await knex('jobs')
-      .where('description', 'ilike', `%${query}%`)
+      .where('title', 'ilike', `%${query}%`)
       .andWhere('location', 'ilike', `%${locationFilter}%`)
       .orderBy('created_at', 'desc');
     filteredJobsSinglePage.totalItems = preliminary.totalItems;
@@ -70,7 +70,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
     return filteredJobsSinglePage;
   } else {
     const [{ count }] = await knex('jobs')
-      .where('description', 'ilike', `%${query}%`)
+      .where('title', 'ilike', `%${query}%`)
       .andWhere('location', 'ilike', `%${locationFilter}%`)
       .count();
 
@@ -78,7 +78,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
     if (count > itemsPerPage) {
       const result = {};
       result.data = await knex('jobs')
-        .where('description', 'ilike', `%${query}%`)
+        .where('title', 'ilike', `%${query}%`)
         .andWhere('location', 'ilike', `%${locationFilter}%`)
         .orderBy('created_at', 'desc')
         .limit(itemsPerPage)
@@ -92,7 +92,7 @@ exports.search = async (query, currentPage = 1, locationFilter, dateFilter) => {
 
     const singlePageResults = {};
     singlePageResults.data = await knex('jobs')
-      .where('description', 'ilike', `%${query}%`)
+      .where('title', 'ilike', `%${query}%`)
       .andWhere('location', 'ilike', `%${locationFilter}%`)
       .orderBy('created_at', 'desc');
     singlePageResults.totalItems = count;
