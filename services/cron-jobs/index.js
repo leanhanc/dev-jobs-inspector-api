@@ -8,7 +8,7 @@ module.exports = () => {
     '0 0 */3 * * *',
     () => {
       /**
-       * Los trabajos se  por área (Front-End, Back-End, Full-Stack) o
+       * Los trabajos se buscan por área (Front-End, Back-End, Full-Stack) o
        * por tecnología (lenguaje o framework)
        */
       (async function processAreasAndTechnologies(AREAS, TECHNOLOGIES) {

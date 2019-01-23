@@ -5,8 +5,10 @@ module.exports = async (page, query) => {
   await searchInput.type(query);
 
   // Enviar consulta
-  const searchButton = await page.$('#searchBtn');
-  await searchButton.click();
+  setTimeout(async () => {
+    const searchButton = await page.$('#searchBtn');
+    await searchButton.click();
+  }, 1000);
 
   return page;
 };

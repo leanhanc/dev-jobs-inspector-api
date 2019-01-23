@@ -13,7 +13,7 @@ exports.AREAS = ['Full-stack', 'Back-end', 'Front-end'];
 exports.TECHNOLOGIES = [
   'Android',
   'Angular',
-  'Desarrollador C',
+  //'Desarrollador C',
   'Cordova',
   'DevOps',
   'Ionic',
@@ -45,6 +45,7 @@ const puppeteer = require('puppeteer');
 exports.puppetLaunch = async () => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    timeout: 50000,
     //headless: process.env.NODE_ENV === 'production' ? true : false,
     defaultViewport: { width: 1200, height: 720 }
   });
@@ -55,7 +56,7 @@ exports.puppetLaunch = async () => {
 // Configurar el tab de Chromium, simular que es Firefox
 exports.puppetPageConfig = async page => {
   await page.setUserAgent(
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:66.0) Gecko/20100101 Firefox/66.0'
   );
   await page.setRequestInterception(true);
   page.on('request', interceptedRequest => {
