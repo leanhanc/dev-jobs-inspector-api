@@ -27,7 +27,7 @@ npm run dev
 Si querés consumir la <a href="https://dev-job-finder-api.herokuapp.com/api/test">API Pública</a> podés hacerlo desde el siguiente endpoint:
 
 ```
-- URL: http://dev-job-finder-api.herokuapp.com/api/search
+- URL: https://dev-job-inspector-api.herokuapp.com/api/search
 - METHOD: "GET"
 - URL PARAMS:
     query=[string] - requerido
@@ -48,5 +48,5 @@ Si querés consumir la <a href="https://dev-job-finder-api.herokuapp.com/api/tes
 #### Ejemplo de consulta
 
 ```
-http://dev-job-finder-api.herokuapp.com/api/search?query=java&locationFilter=Mendoza&dateFilter=this_week
+http://dev-job-inspector-api.herokuapp.com/api/search?query=java&locationFilter=Mendoza&dateFilter=this_week
 ```
