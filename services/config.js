@@ -9,11 +9,11 @@ exports.BUMERAN_FIRST_SELECTOR_TO_WAIT_FOR = '.more';
  * Palabras a buscar en los portales de trabajo
  */
 
-exports.AREAS = ['Full-stack', 'Back-end', 'Front-end'];
+exports.AREAS = ['Full-stack', 'Backend', 'Frontend'];
 exports.TECHNOLOGIES = [
   'Android',
   'Angular',
-  //'Desarrollador C',
+  'Desarrollador C',
   'Cordova',
   'DevOps',
   'Ionic',
