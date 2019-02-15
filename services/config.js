@@ -46,7 +46,7 @@ exports.puppetLaunch = async () => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
     timeout: 50000,
-    //headless: process.env.NODE_ENV === 'production' ? true : false,
+    headless: process.env.NODE_ENV === 'production' ? true : false,
     defaultViewport: { width: 1200, height: 720 }
   });
 

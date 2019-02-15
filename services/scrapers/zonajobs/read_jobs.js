@@ -2,7 +2,7 @@ module.exports = async page => {
   // Ordenar trabajos por "más recientes"
   await page.waitForSelector('a.btn.switch-btn');
   const selector = await page.$$('a.btn.switch-btn');
-  selector[1].click();
+  await selector[1].click();
 
   await page.waitForNavigation({ waitUntil: 'networkidle2' });
 

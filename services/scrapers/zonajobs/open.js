@@ -10,7 +10,9 @@ const open = async browser => {
   const page = await browser.newPage();
   await puppetPageConfig(page);
   await page.goto(ZONAJOBS_URL);
-  await page.waitForSelector(ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR);
+  setTimeout(async () => {
+    await page.waitForSelector(ZONAJOBS_FIRST_SELECTOR_TO_WAIT_FOR);
+  }, 1000);
 
   return { browser, page };
 };
