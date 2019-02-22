@@ -3,10 +3,14 @@
  */
 
 module.exports = async (jobs, page) => {
+  await page.waitFor(1000);
+
   for (const job of jobs) {
     await page.goto(job.url);
 
     await page.waitForSelector('.disclaimer');
+
+    await page.waitFor(1000);
 
     // Quitar disclaimer
     await page.evaluate(async () => {
