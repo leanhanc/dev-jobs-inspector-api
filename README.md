@@ -1,14 +1,12 @@
 # Dev Job Finder - API
 
-- Scraping de avisos para desarrolladores en los portales de trabajo argentinos
-- API para la consulta de los avisos encontrados
+- API para la consulta de los avisos de Computrabajo, Zonajobs y Bumean
 
 La aplicación esta hecha con el siguiente stack:
 
 - Node
 - Express
-- Knex-PostgreSQL
-- Puppetteer
+- Mongo DB
 
 ## Entorno de desarrollo
 
@@ -16,11 +14,6 @@ La aplicación esta hecha con el siguiente stack:
 npm install
 npm run dev
 ```
-
-## Requerimientos
-
-- [Node](http://nodejs.org)
-- [PostgreSQL](http://www.postgresql.org)
 
 ## API Pública - Endpoint
 
