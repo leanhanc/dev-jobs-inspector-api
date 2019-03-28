@@ -22,7 +22,7 @@
     "knex": "^0.15.2",
     "node-cron": "^2.0.3",
     "pg": "^7.6.0",
-    "puppeteer": "^1.10.0"
+    "puppeteer": "1.10.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

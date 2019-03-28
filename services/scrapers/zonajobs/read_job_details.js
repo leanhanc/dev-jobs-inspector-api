@@ -18,6 +18,7 @@ module.exports = async (jobs, page) => {
       const description_container = document.querySelector(
         '.aviso_description'
       );
+      debugger;
       description_container.removeChild(disclaimer);
     });
 
