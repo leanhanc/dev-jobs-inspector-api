@@ -1,9 +1,6 @@
 const logger = require('./services/logger');
 const express = require('express');
 
-// Inicializar gestión de errores
-require('./services/errorHandling');
-
 /* Cargar Variables de entorno */
 require('dotenv').config();
 
