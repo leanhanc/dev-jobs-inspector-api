@@ -1,11 +1,25 @@
-/* Variables de entorno */
+const logger = require('./services/logger');
+const express = require('express');
+
+// Inicializar gestión de errores
+require('./services/errorHandling');
+
+/* Cargar Variables de entorno */
 require('dotenv').config();
 
-/* Express App */
-const app = require('./app');
+// Iniciar Express
+const app = express();
 
-/* Servir API */
-app.set('port', process.env.PORT || 7788);
-const server = app.listen(app.get('port'), () => {
-  console.log(` ✅  Servidor escuchando en el puerto ${server.address().port}`);
+// Cargar rutas
+require('./routes')(app);
+
+// Crear Servidor HTTP
+const { PORT = 7300 } = process.env;
+
+// Inicializar conexión a Base de Datos
+require('./db/connection');
+
+// Iniciar Servidor HTTP
+app.listen(PORT, () => {
+  logger.info(`escuchando en el puerto ${PORT}`);
 });
