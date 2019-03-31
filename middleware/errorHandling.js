@@ -5,8 +5,9 @@ exports.wrapAsync = fn => {
 };
 
 exports.notFound = (req, res, next) => {
-  const err = new Error('No se encontró el recurso que solicitaste');
-  next(err);
+  return res
+    .status(404)
+    .send({ message: 'No se econtró el recurso que solicitase' });
 };
 
 // Handler para errores en desarrollo

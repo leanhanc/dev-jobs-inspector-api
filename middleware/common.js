@@ -34,8 +34,10 @@ module.exports = app => {
   app.use(morgan('dev'));
 
   /* Implementar middlware de errores */
-  app.use(notFound);
+
   app.get('env') === 'development'
     ? app.use(developmentErrors)
     : app.use(productionErrors);
+
+  app.use(notFound);
 };

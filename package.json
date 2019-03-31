@@ -19,8 +19,10 @@
     "express": "^4.16.4",
     "express-sslify": "^1.2.0",
     "helmet": "^3.16.0",
+    "memory-cache": "^0.2.0",
     "mongoose": "^5.4.20",
     "morgan": "^1.9.1",
+    "node-cache": "^4.2.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {

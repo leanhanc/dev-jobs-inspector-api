@@ -37,4 +37,6 @@ const advertSchema = new mongoose.Schema(
   { timestamps: { createdAt: 'createdAt' } }
 );
 
+advertSchema.cache = {};
+
 module.exports = mongoose.model('Advert', advertSchema);
