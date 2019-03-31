@@ -6,13 +6,11 @@ let cacheMiddleware = duration => {
     let key = '__express__' + req.originalUrl || req.url;
     let cacheContent = memCache.get(key);
     if (cacheContent) {
-      console.log('se uso cache');
       res.json(cacheContent);
       return;
     } else {
       res.sendResponse = res.json;
       res.json = body => {
-        console.log('se guarda en cache');
         memCache.put(key, body, duration * 1000);
         res.sendResponse(body);
       };
