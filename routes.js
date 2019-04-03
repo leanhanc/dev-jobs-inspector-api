@@ -15,6 +15,8 @@ module.exports = app => {
       query('q', 'Consulta mal formada')
         .trim()
         .escape()
+        .not()
+        .isEmpty()
     ],
     useCache(CACHE_TTL),
     wrapAsync(adverts.search)
