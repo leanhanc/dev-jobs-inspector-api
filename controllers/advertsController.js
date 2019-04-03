@@ -34,10 +34,6 @@ exports.search = async (req, res) => {
   const currentPage = req.query.currentPage || 1;
   const itemsPerPage = 12;
 
-  if (!q) {
-    return res.status(401).json({ error: 'Query string empty' });
-  }
-
   const count = await Advert.find({
     createdAt: {
       $gte: timeAndDate.substractDays(dateFilter),
