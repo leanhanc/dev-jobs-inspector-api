@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Advert = mongoose.model('Advert');
-
+const { validationResult } = require('express-validator/check');
 const timeAndDate = require('../utils/timeAndDate')();
 
 /**
@@ -24,9 +24,14 @@ exports.search = async (req, res) => {
    * los avisos de la última semana.
    */
 
+  // Resultado de middleware de validación
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
   const { q, dateFilter } = req.query;
   const currentPage = req.query.currentPage || 1;
-
   const itemsPerPage = 12;
 
   if (!q) {
