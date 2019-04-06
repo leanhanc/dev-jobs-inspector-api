@@ -12,12 +12,12 @@ const {
 } = require('./errorHandling');
 
 module.exports = app => {
+  /* Implementar manejo de CORS */
+  app.use(cors());
+
   /* Implementar Body Parser */
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-
-  /* Implementar manejo de CORS */
-  app.use(cors());
 
   /* Implementar seguridad en encabezados */
   app.use(helmet());
