@@ -20,7 +20,7 @@ module.exports = app => {
         .isEmpty()
     ],
     useCache(CACHE_TTL),
-    wrapAsync(adverts)
+    wrapAsync(adverts.search)
   );
 
   return app;
