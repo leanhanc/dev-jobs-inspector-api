@@ -1,17 +1,11 @@
-exports.wrapAsync = fn => {
-  return function(req, res, next) {
-    return fn(req, res, next).catch(next);
-  };
-};
-
-exports.notFound = (req, res, next) => {
+const notFound = (req, res, next) => {
   return res
     .status(404)
     .send({ message: 'No se econtró el recurso que solicitase' });
 };
 
 // Handler para errores en desarrollo
-exports.developmentErrors = (err, req, res, next) => {
+const developmentErrors = (err, req, res, next) => {
   err.stack = err.stack || '';
   const errorDetails = {
     error: err.message,
@@ -21,5 +15,15 @@ exports.developmentErrors = (err, req, res, next) => {
 };
 
 // Handler para errores en producción
-exports.productionErrors = (err, req, res, next) =>
+const productionErrors = (err, req, res, next) =>
   res.status(err.status || 500).json({ error: err.message });
+
+/* Implementar middlware de errores */
+
+module.exports = app => {
+  app.get('env') === 'development'
+    ? app.use(developmentErrors)
+    : app.use(productionErrors);
+
+  app.use(notFound);
+};

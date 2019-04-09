@@ -11,6 +11,3 @@ mongoose.Promise = global.Promise;
 mongoose.connection.on('error', err => {
   logger.error(`⛔ → ${err.message}`);
 });
-
-// Registrar modelos
-require('../models/Advert');
