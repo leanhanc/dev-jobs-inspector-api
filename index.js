@@ -20,9 +20,6 @@ applyMiddleware(app);
 // Cargar rutas
 applyRouting(app);
 
-// Iniciar Servidor HTTP
-const server = http.createServer(app);
-
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   logger.info(`escuchando en el puerto ${PORT}`);
 });
