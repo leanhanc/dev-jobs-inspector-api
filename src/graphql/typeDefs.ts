@@ -12,7 +12,13 @@ export const typeDefs = gql`
     url: String!
   }
 
+  type PaginatedJobsData {
+    total: Int!
+    result: [Job!]!
+  }
+
   type Query {
     jobs: [Job!]!
+    paginatedJobs(limit: Int!, page: Int!): PaginatedJobsData!
   }
 `;

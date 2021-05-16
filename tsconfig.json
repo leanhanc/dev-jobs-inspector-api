@@ -27,7 +27,7 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*", "src/typings"]
     },
     "typeRoots": ["node_modules/@types"],
     "strictPropertyInitialization": false

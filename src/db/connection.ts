@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
-import { Database, Job } from "~/typings/collections";
+import { Database } from "~/typings/collections";
+import { Job } from "~/typings/jobs";
 
 const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
