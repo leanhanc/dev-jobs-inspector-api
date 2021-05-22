@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Job {
@@ -19,6 +19,6 @@ export const typeDefs = gql`
 
   type Query {
     jobs: [Job!]!
-    paginatedJobs(limit: Int!, page: Int!): PaginatedJobsData!
+    paginatedJobs(limit: Int!, page: Int!, search: String): PaginatedJobsData!
   }
 `;

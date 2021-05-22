@@ -14,6 +14,7 @@ export interface Job {
 export interface PaginatedJobsArgs {
   limit: number;
   page: number;
+  search?: string;
 }
 
 export interface PaginatedJobsData {

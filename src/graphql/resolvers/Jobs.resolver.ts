@@ -1,4 +1,4 @@
-import { IResolvers } from "apollo-server";
+import { IResolvers } from "apollo-server-express";
 import { Database } from "~/typings/collections";
 import { Job, PaginatedJobsArgs, PaginatedJobsData } from "~/typings/jobs";
 
@@ -13,7 +13,7 @@ export const jobsResolvers: IResolvers = {
     },
     paginatedJobs: async (
       _root: undefined,
-      { limit, page }: PaginatedJobsArgs,
+      { limit, page, search }: PaginatedJobsArgs,
       { db }: { db: Database },
     ): Promise<PaginatedJobsData | null> => {
       const data: PaginatedJobsData = {
@@ -21,7 +21,18 @@ export const jobsResolvers: IResolvers = {
         result: [],
       };
 
-      const cursor = await db.jobs.find();
+      let whereCondition = {};
+
+      if (search) {
+        whereCondition = {
+          ...whereCondition,
+          $text: {
+            $search: search,
+          },
+        };
+      }
+
+      const cursor = await db.jobs.find(whereCondition);
 
       cursor.skip(page > 0 ? (page - 1) * limit : 0);
       cursor.limit(limit);

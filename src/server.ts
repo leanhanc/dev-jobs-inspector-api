@@ -15,6 +15,10 @@ import config from "~/config";
 
 // import { getAuthUser, customAuthChecker } from '~/middlewares';
 
+const corsOptions = {
+  origin: "http://localhost:3000",
+};
+
 export class Server {
   public constructor(private port: number) {}
 
@@ -49,7 +53,11 @@ export class Server {
         }),
       });
 
-      server.applyMiddleware({ app, path: "/api" });
+      server.applyMiddleware({
+        app,
+        path: "/api",
+        cors: corsOptions,
+      });
 
       // Start App
       app.listen({ port: this.port }, () => Logger.info(`🚀 Server ready at port ${this.port}`));
