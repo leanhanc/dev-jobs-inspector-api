@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 
 export interface Job {
-  _id?: ObjectId;
+  _id: ObjectId;
   date: string;
   description: string;
   location: string;
@@ -12,12 +12,9 @@ export interface Job {
 }
 
 export interface PaginatedJobsArgs {
-  limit: number;
-  page: number;
-  search?: string;
-}
-
-export interface PaginatedJobsData {
-  total: number;
-  result: Job[];
+  input: {
+    limit: number;
+    page: number;
+    search?: string;
+  };
 }

@@ -1,4 +1,9 @@
 import express from "express";
+import path from "path";
+import "reflect-metadata";
+
+// Apollo
+import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server-express";
 
 // Database
@@ -7,9 +12,6 @@ import { connectDatabase as dbConnection } from "~/db/connection";
 // Services
 import { Logger } from "~/services/Logger";
 
-// GraphQL
-import { typeDefs, resolvers } from "./graphql";
-
 // Config
 import config from "~/config";
 
@@ -17,12 +19,29 @@ import config from "~/config";
 
 const corsOptions = {
   origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
 };
 
 export class Server {
   public constructor(private port: number) {}
 
+  private async getSchema() {
+    const schema = await buildSchema({
+      resolvers: [
+        path.join(__dirname, "graphql/**/*.{query,mutation,resolver,subscription}.{js,ts}"),
+      ],
+    });
+    return schema;
+  }
+
   async run() {
+    let schema;
+    try {
+      schema = await this.getSchema();
+    } catch (e) {
+      console.log(e);
+    }
+
     // Handle uncaught exceptions/unhandled promise rejections and log them
     process.on("uncaughtException", (e) => {
       Logger.error(`${e.message}\n${e.stack}`);
@@ -40,8 +59,7 @@ export class Server {
 
       // Init Apollo Server
       const server = new ApolloServer({
-        typeDefs,
-        resolvers,
+        schema,
         playground: true,
         introspection: true,
         debug: config.generic.isDev,
