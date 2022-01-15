@@ -23,24 +23,33 @@ export class JobResolver {
       result: [],
     };
 
-    let whereCondition = {};
-
-    if (search) {
-      whereCondition = {
-        ...whereCondition,
-        $text: {
-          $search: search,
+    // TODO: SORT BY DATE
+    let cursor = await db.jobs.aggregate([
+      {
+        $search: {
+          index: "search_jobs",
+          text: {
+            query: search,
+            path: {
+              wildcard: "*",
+            },
+          },
         },
-      };
-    }
-
-    const cursor = await db.jobs.find(whereCondition);
+      },
+      {
+        $sort: {
+          date: -1,
+        },
+      },
+    ]);
 
     cursor.skip(page > 0 ? (page - 1) * limit : 0);
     cursor.limit(limit);
 
-    data.total = await cursor.count();
-    data.result = await cursor.toArray();
+    const resultArray = await cursor.toArray();
+
+    data.result = resultArray;
+    data.total = resultArray.length;
 
     return data;
   }

@@ -19,6 +19,7 @@ import config from "~/config";
 
 const corsOptions = {
   origin: "http://localhost:3000",
+  credentials: true,
   optionsSuccessStatus: 200,
 };
 
@@ -79,7 +80,7 @@ export class Server {
 
       // Start App
       app.listen({ port: this.port }, () => Logger.info(`🚀 Server ready at port ${this.port}`));
-    } catch (e) {
+    } catch (e: any) {
       Logger.info(e.stack);
     }
   }
