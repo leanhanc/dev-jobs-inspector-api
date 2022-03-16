@@ -43,13 +43,13 @@ export class JobResolver {
       },
     ]);
 
+    data.total = await (await cursor.toArray()).length;
     cursor.skip(page > 0 ? (page - 1) * limit : 0);
     cursor.limit(limit);
 
     const resultArray = await cursor.toArray();
 
     data.result = resultArray;
-    data.total = resultArray.length;
 
     return data;
   }
