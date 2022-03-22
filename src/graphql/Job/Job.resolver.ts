@@ -1,3 +1,4 @@
+import { AggregationCursor } from "mongodb";
 import { Resolver, Ctx, Query, Args } from "type-graphql";
 
 import { Database } from "~/typings/collections";
@@ -15,7 +16,7 @@ export class JobResolver {
 
   @Query(() => PaginatedJobsData)
   async paginatedJobs(
-    @Args() { search, limit, page }: PaginatedJobsArgs,
+    @Args() { search, location, limit, page }: PaginatedJobsArgs,
     @Ctx("db") db: Database,
   ): Promise<PaginatedJobsData | null> {
     const data: PaginatedJobsData = {
@@ -23,8 +24,8 @@ export class JobResolver {
       result: [],
     };
 
-    // TODO: SORT BY DATE
-    let cursor = await db.jobs.aggregate([
+    let cursor: AggregationCursor<Job>;
+    let baseQuery = [
       {
         $search: {
           index: "search_jobs",
@@ -41,7 +42,16 @@ export class JobResolver {
           date: -1,
         },
       },
-    ]);
+    ];
+
+    if (!location) {
+      cursor = await db.jobs.aggregate(baseQuery);
+    } else {
+      cursor = await db.jobs.aggregate([
+        ...baseQuery,
+        { $match: { location: { $regex: location } } },
+      ]);
+    }
 
     data.total = await (await cursor.toArray()).length;
     cursor.skip(page > 0 ? (page - 1) * limit : 0);

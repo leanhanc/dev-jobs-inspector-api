@@ -11,8 +11,6 @@ export const connectDatabase = async (): Promise<Database> => {
   });
   const db = mongoClient.db("dev-jobs");
 
-  db.collection("jobs").createIndex({ title: "text", description: "text" });
-
   return {
     jobs: db.collection<Job>("jobs"),
   };

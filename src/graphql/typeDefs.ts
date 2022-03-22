@@ -19,6 +19,6 @@ export const typeDefs = gql`
 
   type Query {
     jobs: [Job!]!
-    paginatedJobs(limit: Int!, page: Int!, search: String): PaginatedJobsData!
+    paginatedJobs(limit: Int!, location: String, page: Int!, search: String): PaginatedJobsData!
   }
 `;

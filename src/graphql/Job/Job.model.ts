@@ -37,7 +37,10 @@ export class PaginatedJobsArgs {
   page: number = 1;
 
   @Field()
-  search?: string;
+  search: string;
+
+  @Field()
+  location?: string;
 }
 
 @ObjectType()
