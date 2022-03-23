@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build:clean && npm run build:compile",
-    "build:compile": "ttsc -p tsconfig.release.json",
+    "build:compile": "ttsc -p tsconfig.build.json",
     "build:clean": "rimraf build/",
     "dev": "NODE_ENV=development ts-node-dev --rs -r tsconfig-paths/register src/index.ts",
     "dev:debug": "ts-node-dev --inspect=4321 --respawn --transpile-only src/index.ts",
