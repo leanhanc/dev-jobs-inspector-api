@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/mongodb": "^3.6.3",
+    "@zerollup/ts-transform-paths": "^1.7.18",
     "apollo-server-express": "^2.24.1",
     "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
@@ -36,7 +37,6 @@
     "@types/pino": "^6.3.4",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.11.0",
-    "@zerollup/ts-transform-paths": "^1.7.18",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
