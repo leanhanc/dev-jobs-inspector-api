@@ -61,7 +61,7 @@ export class Server {
       // Init Apollo Server
       const server = new ApolloServer({
         schema,
-        playground: true,
+        playground: config.generic.isDev,
         introspection: true,
         debug: config.generic.isDev,
         tracing: config.generic.isDev,
