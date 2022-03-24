@@ -15,10 +15,8 @@ import { Logger } from "~/services/Logger";
 // Config
 import config from "~/config";
 
-// import { getAuthUser, customAuthChecker } from '~/middlewares';
-
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", process.env.CLIENT_URL || ""],
   credentials: true,
   optionsSuccessStatus: 200,
 };
