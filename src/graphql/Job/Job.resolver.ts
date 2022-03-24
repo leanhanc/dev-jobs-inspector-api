@@ -38,6 +38,9 @@ export class JobResolver {
         },
       },
       {
+        $limit: limit * 10, // Max 10 pages of results
+      },
+      {
         $sort: {
           date: -1,
         },
@@ -54,6 +57,8 @@ export class JobResolver {
     }
 
     data.total = await (await cursor.toArray()).length;
+
+    // Paginate
     cursor.skip(page > 0 ? (page - 1) * limit : 0);
     cursor.limit(limit);
 
